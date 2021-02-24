@@ -28,13 +28,12 @@ class PostsService
   end
 
   def create
-    @post = Post.new(posts_params)
-    @post.save!
+    post = Post.new(posts_params)
+    post.save!
 
-    { data: @post.json_view }
+    { data: post.json_view }
 
-  rescue => e
-    {errs: ['cannot create'], status_code: :internal_server_error, has_error: true}
+
   rescue => e
     {errs: [e.to_s], status_code: :internal_server_error, has_error: true}
   end

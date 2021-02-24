@@ -2,8 +2,9 @@ Rails.application.routes.draw do
   namespace 'api' do
     namespace 'v1' do
       #post 'posts/destroy/:id', to: 'posts#destroy'
-      resources :posts
-      resources :comments
+      resources :posts do
+        resources :comments
+      end
     end
   end
 

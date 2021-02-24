@@ -29,12 +29,13 @@ class CommentsService
 
   def create
     comment = Comment.new(comment_params)
+    comment.post_id = params[:post_id]
+
     comment.save!
 
     { data: comment.json_view }
-
   rescue => e
-    {errs: [e.to_s], status_code: :internal_server_error, has_error: true}
+    {errs: I18n.t('errors.messages.blank'), status_code: "422", has_error: true}
   end
 
   def destroy
