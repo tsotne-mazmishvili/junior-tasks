@@ -28,7 +28,6 @@ class PostsService
   end
 
   def create
-
     post = Post.new(posts_params)
     post.save!
 
